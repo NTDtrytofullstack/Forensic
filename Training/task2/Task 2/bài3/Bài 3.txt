@@ -1,0 +1,1 @@
+Viết code giấu đoạn tin với nội dung là tên của mình vào các bit sau (bit 1 của red, bit 0 của green, bit 2 của blue) của một bức ảnh bất kì và viết 1 code giải mã trích xuất đoạn tin đó

@@ -1,0 +1,1 @@
+Yêu cầu: viết code đọc tất cả giá trị rgb của một bức ảnh bất kì trong máy (thích dùng ảnh nào thì dùng) ra một file txt sau đó lại viết code chuyển từ rgb về ảnh gốc
