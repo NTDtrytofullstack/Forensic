@@ -32,7 +32,7 @@ Question: I listen to this while studying for my exams. https://youtu.be/1Cbaa6d
 - Mình xài `https://www.yt1s.com/vi14sq` để tải nó về , mất 5p và mất 20p để convert nó sang `mp3` và hơn 20p để có thể mở trong `audacity`.
 ![1711991322599](image/writeup/1711991322599.png)
 - Và đây sự khác biệt ở `3:14:00` nó có 1 đoạn sóng nhô lên, mình vào nghe thử thì nó là mã `morse`, nhưng mà nó được chèn vào giữa đoạn nhạc luôn cho nên khi mà ta đưa đoạn morse này lên web thì nó sẽ bị loạn và flag sẽ bị sai , nên mình đã nghe chay :((( , điếc vã òn thì được như này.
-![1711991466443](image/writeup/1711991466443.png)
+![1713514973444](image/writeup/1713514973444.png)
 - *`FLAG: utflag{L0V3TH4TDANC3}`*
 ### A Very Professional Website.
 ```
