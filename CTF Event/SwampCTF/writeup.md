@@ -4,25 +4,25 @@
 Question: What happened to my traffic??? The pings?!?? They’re taking over!!!! They’re… ping… pong pingpong ping find my pong flag.
 ```
 - Chall này là 1 chall networking nó cho ta 1 file `.pcap`, mình mở file bằng `wiershark` thì thấy rất nhiều request của protocol `ICMP`.
-![1713170050971](image/writep/1713170050971.png)
+![1713170050971](image/writeup/1713170050971.png)
 - Có thể dễ dàng nhận ra data của nó là 1 đoạn base64 , mình có thử copy đoạn base64 này ở cái request đầu tiên ( No. 25) xem nó là gì.
-![1713170245291](image/writep/1713170245291.png)
+![1713170245291](image/writeup/1713170245291.png)
 - Đoạn base này mình decode thì ta có thể thấy nó có header của 1 file `png`, mình hiểu ra ngay là ta cần sẽ lọc ra hết các dữ liệu ghép nó lại thành 1 ảnh hoàn chỉnh, ở đây mình xài `Tshark` để lấy dữ liệu cho nó dễ :
 ```
 tshark -r traffic.pcap -Y "icmp" -T fields -e "data" > data.txt
 ```
 - Dữ liệu nhận về sẽ là hex , nên cần phải decode sang string 1 lần nữa, và xài `CyberChef` để nó tự động lưu thành 1 file ảnh.
-![1713170749916](image/writep/1713170749916.png)
-![1713170762844](image/writep/1713170762844.png)
+![1713170749916](image/writeup/1713170749916.png)
+![1713170762844](image/writeup/1713170762844.png)
 - *`FLAG: swampCTF{d474_15_3v3rywh3r3}`*.
 ### New C2 Channel.
 ```
 Question: Sometimes you can exfiltrate data with more than just plain text. Can you figure out how the attacker smuggled out the flag on our network?
 ```
 - Bài này cũng thế chall cho ta 1 file `.pcap` vào wireshark check tiếp hoiii, chuyện là chẳng có gì mình cứ lướt lướt xem thì thấy cái này nó sú lém.
-![1713170945561](image/writep/1713170945561.png)
+![1713170945561](image/writeup/1713170945561.png)
 - Nó có chữ trên đó, nên mình cũng check thêm thử những cái khác xem như nào, điểm chúng của những dòng có flag như này đều có protocol là `http` và có length = 369 , mình filter bằng `frame.len == 369`.
-![1713171070575](image/writep/1713171070575.png)
+![1713171070575](image/writeup/1713171070575.png)
 - quả thật flag được giấu ở đây :)) , mình chỉ việc xài phím mũi tên xuống ghi chú lại flag thuuiii.
 - *`FLAG: swampCTF{w3lc0m3_70_7h3_l4nd_0f_7h3_pc4p}`*.
 ### Notoriously Tricky Login Mess (Part 1).
@@ -30,16 +30,16 @@ Question: Sometimes you can exfiltrate data with more than just plain text. Can 
 Question: We found out a user account has been compromised on our network. We took a packet capture of the time that we believe the remote login happened. Can you find out what the username of the compromised account is? Flag format: swampCTF{username}
 ```
 - Bài này cho ta 1 file `pcap` và flag sẽ là username của victim, mình cùng vào wireshark check thử xem có gì ko nhé.
-![1713171367288](image/writep/1713171367288.png)
+![1713171367288](image/writeup/1713171367288.png)
 - Thì mình thấy cái này , mình liền xài filter là `http` để check xem có user nào khác ko thì quả thật có 1 user khác là `adamkadaban`.
-![1713171416775](image/writep/1713171416775.png)
+![1713171416775](image/writeup/1713171416775.png)
 - *`FLAG : swampCTF{adamkadaban}`*.
 ### Notoriously Tricky Login Mess (Part 2).
 ```
 Question: Great job finding the username! We want to find out the password of the account now to see how it was so easily breached. Can you help? Flag format: swampCTF{password}
 ```
 - Bài này có cùng 1 file pcap của bài trước bài này yêu cầu ta tìm pass của user vừa rồi, cũng với filter trên mình thấy có dòng `NTLMSSP_CHALLENGE` và `NTLMSSP_AUTH`.
-![1713171568390](image/writep/1713171568390.png)
+![1713171568390](image/writeup/1713171568390.png)
 - Hãy xem [video này](https://www.youtube.com/watch?v=lhhlgoMjM7o) , nó sẽ chỉ các bạn trích xuất giá trị hash tổng hợp lại , sử dụng `hashcat` là sẽ thu được pass.
 ```
 User: adamkadaban
